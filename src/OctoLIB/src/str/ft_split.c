@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 02:24:51 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/11/04 23:39:04 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:01:37 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_count_words(char const *s, char c)
 	return (count);
 }
 
-static void	ft_free_all(char **tab, size_t j)
+void	ft_free_tab(char **tab, size_t j)
 {
 	size_t	i;
 
@@ -71,7 +71,7 @@ char	**ft_split(char const *s, char c)
 			len++;
 		tab[i] = ft_substr(s, 0, len);
 		if (!tab[i])
-			return (ft_free_all(tab, i), NULL);
+			return (ft_free_tab(tab, i), NULL);
 		s += len;
 		i++;
 	}

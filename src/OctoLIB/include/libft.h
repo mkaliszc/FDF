@@ -86,4 +86,6 @@ int		ft_putint_unsigned(int nbr);
 int		ft_puthexa_upper(unsigned long nb, int n);
 int		ft_puthexa(unsigned long nb, int n);
 
+void	ft_free_tab(char **tab, size_t j);
+
 #endif

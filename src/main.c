@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/07 23:55:36 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/09 18:03:05 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,28 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 int	main(int argc, char **argv)
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
+	t_data	*data;
 
 	if (argc < 2 || argc > 2)
 		return (perror("Too much files or missing map"), 1);
-	if (ft_strnstr(argv[1], ".fdf", ft_strlen(argv[1]))) // DOn't if there is letter behind the .fdf !
-		return (perror("Wrong file format, correct file format : *.fdf"), 1);
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
-	img.img = mlx_new_image(mlx, 500, 500);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	// Coordinates and size for the square
-	int square_x = 100;
+	else
+	{
+		if (check_arg(argv[1]))
+			return (perror("Wrong file format"), 1);
+		data = malloc(sizeof(t_data));
+		if (data == NULL)
+			return (perror("allocation error for data"), 1);
+		init_matrix(argv[1], data);
+		data->mlx = mlx_init();
+		data->window = mlx_new_window(data->mlx, 1920, 1080, "FDF");
+		data->img = mlx_new_image(data->mlx, 500, 500);
+		data->addr = mlx_get_data_addr(data->img, data->bits_per_pixel,data->line_length, data->endian);
+		mlx_put_image_to_window(data->mlx, data->window, data->img, 0, 0);
+		mlx_loop(data->mlx);
+	}
+}
+
+/* 	int square_x = 100;
 	int square_y = 100;
 	int square_size = 100;
 
@@ -43,9 +51,6 @@ int	main(int argc, char **argv)
 	{
 		for (int x = square_x; x < square_x + square_size; x++)
 		{
-			my_mlx_pixel_put(&img, x, y, 0x000000FF);
+			my_mlx_pixel_put(data, x, y, 0x000000FF);
 		}
-	}
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
-}
+	} */
