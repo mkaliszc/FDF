@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/09 18:16:37 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/10 22:37:19 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 
 # include "../src/OctoLIB/include/libft.h"
 # include <errno.h>
+# include <math.h>
 # include "minilibx/mlx.h"
 # include <X11/keysym.h>
 # include <X11/XKBlib.h>
+
+# define ANGLE 0.523599
 
 typedef struct	s_data
 {
@@ -34,5 +37,7 @@ typedef struct	s_data
 }			t_data;
 
 void	init_matrix(char *file_name, t_data *data);
+int		check_file_name(char *file_name);
+
 
 #endif

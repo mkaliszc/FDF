@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/09 18:03:05 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:33:59 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		return (perror("Too much files or missing map"), 1);
 	else
 	{
-		if (check_arg(argv[1]))
+		if (check_name_file(argv[1]) == 1)
 			return (perror("Wrong file format"), 1);
 		data = malloc(sizeof(t_data));
 		if (data == NULL)

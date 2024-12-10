@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:15:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/09 18:57:01 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:35:01 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	map_dimensions(t_data *data, char *file_name)
 
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-		return (perror("Error while oppening the file"), NULL);
+		return (perror("Error while opening the file"), NULL);
 	line = get_next_line(fd);
 	get_length(data, line);
 	data->map_height = 1;
@@ -68,7 +68,7 @@ void	create_matrix(t_data *data, char *file_name)
 	y = 0;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
-		return (perror("Error while oppening the file"), NULL);
+		return (perror("Error while opening the file"), NULL);
 	line = get_next_line(fd);
 	while (line != NULL && y < data->map_height)
 	{
@@ -98,16 +98,3 @@ void	init_matrix(char *file_name, t_data *data)
 	}
 	ft_create_matrix(data, file_name);
 }
-/* 
-	fd = open(file_name, O_RDONLY);
-	if (fd < 0)
-		return (perror("Error while oppening the file"), NULL);
-	line = get_next_line(fd);
-	while (line != NULL && y < data->map_height)
-	{
-		fill_matrix(data->matrix[y], line);
-		free(line);
-		y++;
-		line = get_next_line(fd);
-	}
-	free(line); */
