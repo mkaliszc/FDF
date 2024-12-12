@@ -8,7 +8,8 @@ OBJ_DIR = obj
 LIB_DIR = src/OctoLIB
 
 FT = main \
-    parsing/map_parsing \
+    parsing/map_parsing parsing/check_file_name \
+	algo/fdf \
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FT)))
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FT)))

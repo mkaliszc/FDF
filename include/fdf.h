@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/11 20:22:44 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/12 15:29:02 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,8 @@ typedef struct	s_data
 
 void	init_matrix(char *file_name, t_data *data);
 int		check_file_name(char *file_name);
-
+void	draw_line(t_data *data, int x0, int y0, int x1, int y1, int color);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	iso_proj(int *x, int *y, int z);
 
 #endif
