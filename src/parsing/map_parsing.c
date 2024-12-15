@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:15:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/12 16:34:11 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/15 01:23:29 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	map_dimensions(t_data *data, char *file_name)
 	char *line;
 	int	fd;
 
+	line = NULL;
 	fd = open(file_name, O_RDONLY);
 	if (fd < 0)
 	{
@@ -36,15 +37,13 @@ void	map_dimensions(t_data *data, char *file_name)
 	}
 	line = get_next_line(fd);
 	get_length(data, line);
-	data->map_height = 1;
-	while (line)
+	data->map_height = 0;
+	while (line != NULL)
 	{
 		data->map_height++;
 		free(line);
 		line = get_next_line(fd);
 	}
-	printf("map height %d\n", data->map_height);
-	free(line);
 	close(fd);
 }
 

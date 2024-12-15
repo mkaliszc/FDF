@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/12 15:29:02 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/15 00:35:10 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,23 @@
 # include <X11/XKBlib.h>
 
 # define ANGLE 0.523599
+# define HEIGHT 1080
+# define WIDTH 1920
+# define ZOOM 20
+# define WINDOW_HEIGHT 1080
+# define WINDOW_LENGTH 1920
 
-typedef struct	s_line
+typedef struct s_point
 {
-	int	dx;
-	int	dy;
-	int	sx;
-	int	sy;
-	int	err;
-	int	err2;
-}	t_line;
+	double  x;
+	double  y;
+	int     z;
+	double  delta_x;
+	double  delta_y;
+	int     steps;
+	double  x_increment;
+	double  y_increment;
+}	t_point;
 
 typedef struct	s_data
 {
@@ -44,12 +51,17 @@ typedef struct	s_data
 	int		endian;
 	int		map_height;
 	int		map_length;
+	double	zoom;
+	int		x;
+	int		y;
+	t_point current;
+	t_point right;
 }			t_data;
 
 void	init_matrix(char *file_name, t_data *data);
 int		check_file_name(char *file_name);
-void	draw_line(t_data *data, int x0, int y0, int x1, int y1, int color);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	iso_proj(int *x, int *y, int z);
+t_point	iso_proj(double x, double y, double z);
+void	draw_map(t_data *data);
 
 #endif
