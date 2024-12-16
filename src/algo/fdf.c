@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 20:51:33 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/15 00:31:54 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/16 19:05:20 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_point	iso_proj(double x, double y, double z)
 	t_point	current;
 
 	current.x = (x - y) * cos(ANGLE) * ZOOM + WINDOW_LENGTH / 2;
-	current.y = ((x + y) * sin(ANGLE) - z) * ZOOM + WINDOW_HEIGHT / 2;
+	current.y = ((x + y) * sin(ANGLE) - z) * ZOOM + WINDOW_HEIGHT / 2; // scaling sur z pour mmodifier la hauteur
 	current.z = z;
 	return (current);
 }

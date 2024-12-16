@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:15:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/15 01:23:29 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/16 18:53:33 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	get_length(t_data *data, char *line)
 	tmp = ft_split(line, ' ');
 	data->map_length = 0;
 	while (tmp[data->map_length] != NULL)
+	{
 		data->map_length++;
+	}
 	ft_free_tab(tmp, data->map_length);
 }
 
@@ -83,6 +85,7 @@ void	create_matrix(t_data *data, char *file_name)
 		y++;
 		line = get_next_line(fd);
 	}
+	close(fd);
 	free(line);
 }
 
@@ -90,6 +93,8 @@ void	init_matrix(char *file_name, t_data *data)
 {
 	int		i;
 
+	data->map_height = 0;
+	data->map_length = 0;
 	map_dimensions(data, file_name);
 	data->matrix = malloc(sizeof(int *) * data->map_height);
 	if (data->matrix == NULL)

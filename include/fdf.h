@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/15 00:35:10 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/16 21:00:46 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 # define ZOOM 20
 # define WINDOW_HEIGHT 1080
 # define WINDOW_LENGTH 1920
+# define ESCAPE XK_Escape
 
 typedef struct s_point
 {
@@ -55,7 +56,6 @@ typedef struct	s_data
 	int		x;
 	int		y;
 	t_point current;
-	t_point right;
 }			t_data;
 
 void	init_matrix(char *file_name, t_data *data);
