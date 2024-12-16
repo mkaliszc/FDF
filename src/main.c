@@ -6,23 +6,11 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/16 21:08:28 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/16 22:15:51 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/fdf.h"
-
-/* void	draw_map(t_data *data)
-{
-	int	x;
-	int	y;
-
-	y = 0;
-	while (y < data->map_height)
-	{
-		
-	}
-} */
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -36,11 +24,6 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-/* void	handle_event(t_data *data)
-{
-	mlx_hook(data->window, KeyPress, KeyPressMask, handle_close, data);
-} */
-
 int	init_data(t_data *data)
 {
 	data->mlx = mlx_init();
@@ -51,7 +34,7 @@ int	init_data(t_data *data)
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel,
 							&data->line_length, &data->endian);
 	draw_map(data);
-	//handle_event(data);
+	handle_event(data);
 	mlx_loop(data->mlx);
 	return (0);
 }

@@ -9,7 +9,7 @@ LIB_DIR = src/OctoLIB
 
 FT = main \
     parsing/map_parsing parsing/check_file_name \
-	algo/fdf \
+	algo/fdf algo/event \
 
 SOURCES = $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FT)))
 OBJS = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FT)))

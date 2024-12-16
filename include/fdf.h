@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/16 21:00:46 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/16 22:12:39 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ int		check_file_name(char *file_name);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_point	iso_proj(double x, double y, double z);
 void	draw_map(t_data *data);
+void	handle_event(t_data *data);
 
 #endif
