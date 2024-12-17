@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:11:35 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 22:01:40 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:35:44 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int	wich_key(int key, t_data *data)
 		data->shift_x--;
 	if (key == D_KEY)
 		data->shift_x++;
+	if (key == T_KEY)
+		data->proj_type = 1;
+	if (key == I_KEY)
+		data->proj_type = 0;
 	return (0);
 }
 

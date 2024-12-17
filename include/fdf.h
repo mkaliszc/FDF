@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 18:38:24 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:36:02 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,14 @@
 # define D_KEY XK_d
 # define W_KEY XK_w
 # define S_KEY XK_s
+# define T_KEY XK_t
+# define I_KEY XK_i
+
+typedef	enum e_proj
+{
+	ISO,
+	TOP
+} 	t_proj;
 
 typedef struct s_point
 {
@@ -65,6 +73,7 @@ typedef struct	s_data
 	int		coef;
 	int		shift_x;
 	int		shift_y;
+	t_proj	proj_type;
 	t_point curr;
 }			t_data;
 
@@ -75,5 +84,6 @@ t_point	iso_proj(double x, double y, double z, t_data *data);
 void	draw_map(t_data *data);
 void	handle_event(t_data *data);
 void	free_data(t_data *data);
+t_point	top_proj(double x, double y, double z, t_data *data);
 
 #endif

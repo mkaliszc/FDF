@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 22:05:14 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:32:45 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int	main(int argc, char **argv)
 	data->shift_y = 1;
 	data->zoom = 20;
 	data->coef = 1;
+	data->proj_type = 0;
 	init_data(data);
 	return (0);
 }

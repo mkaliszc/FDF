@@ -6,21 +6,11 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 20:51:33 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 21:58:41 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:34:22 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-t_point	iso_proj(double x, double y, double z, t_data *data)
-{
-	t_point	curr;
-
-	curr.x = (x - y) * cos(ANGLE) * data->zoom + LENGTH / 2;
-	curr.y = ((x + y) * sin(ANGLE) - z * data->coef) * data->zoom + HEIGHT / 2;
-	curr.z = z;
-	return (curr);
-}
 
 t_point	project(t_data *data, int x, int y, int z)
 {
@@ -31,7 +21,10 @@ t_point	project(t_data *data, int x, int y, int z)
 	px = (x + data->shift_x) - (data->map_length - 1) / 2.0;
 	py = (y + data->shift_y) - (data->map_height - 1) / 2.0;
 	pz = z;
-	return (iso_proj(px, py, pz, data));
+	if (data->proj_type == 0)
+		return (iso_proj(px, py, pz, data));
+	else
+		return (top_proj(px, py, pz, data));
 }
 
 void	draw_line(t_data *data, t_point start, t_point end)
