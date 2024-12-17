@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:15:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/16 18:53:33 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:27:37 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	get_length(t_data *data, char *line)
 
 void	map_dimensions(t_data *data, char *file_name)
 {
-	char *line;
-	int	fd;
+	char	*line;
+	int		fd;
 
 	line = NULL;
 	fd = open(file_name, O_RDONLY);
@@ -66,8 +66,8 @@ void	fill_matrix(int *matrix, char *line)
 
 void	create_matrix(t_data *data, char *file_name)
 {
+	char	*line;
 	int		fd;
-	char 	*line;
 	int		y;
 
 	y = 0;
@@ -91,7 +91,7 @@ void	create_matrix(t_data *data, char *file_name)
 
 void	init_matrix(char *file_name, t_data *data)
 {
-	int		i;
+	int	i;
 
 	data->map_height = 0;
 	data->map_length = 0;

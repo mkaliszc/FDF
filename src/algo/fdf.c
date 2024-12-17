@@ -6,20 +6,20 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 20:51:33 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/16 19:05:20 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 21:26:43 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_point	iso_proj(double x, double y, double z)
+t_point	iso_proj(double x, double y, double z, t_data *data)
 {
-	t_point	current;
+	t_point	curr;
 
-	current.x = (x - y) * cos(ANGLE) * ZOOM + WINDOW_LENGTH / 2;
-	current.y = ((x + y) * sin(ANGLE) - z) * ZOOM + WINDOW_HEIGHT / 2; // scaling sur z pour mmodifier la hauteur
-	current.z = z;
-	return (current);
+	curr.x = (x - y) * cos(ANGLE) * data->zoom + LENGTH / 2;
+	curr.y = ((x + y) * sin(ANGLE) - z * data->coef) * data->zoom + HEIGHT / 2;
+	curr.z = z;
+	return (curr);
 }
 
 t_point	project(t_data *data, int x, int y, int z)
@@ -28,10 +28,10 @@ t_point	project(t_data *data, int x, int y, int z)
 	double	py;
 	double	pz;
 
-	px = x - (data->map_length - 1) / 2.0;
-	py = y - (data->map_height - 1) / 2.0;
+	px = (x + data->shift_x) - (data->map_length - 1) / 2.0;
+	py = (y + data->shift_y) - (data->map_height - 1) / 2.0;
 	pz = z;
-	return(iso_proj(px, py, pz));
+	return (iso_proj(px, py, pz, data));
 }
 
 void	draw_line(t_data *data, t_point start, t_point end)
@@ -59,25 +59,28 @@ void	draw_line(t_data *data, t_point start, t_point end)
 void	draw_map(t_data *data)
 {
 	t_point	end;
-	
+
 	data->y = -1;
 	while (++data->y < data->map_height)
 	{
 		data->x = -1;
 		while (++data->x < data->map_length)
 		{
-			data->current = project(data, data->x, data->y, data->matrix[data->y][data->x]);
+			data->curr = project(data, data->x, data->y,
+					data->matrix[data->y][data->x]);
 			if (data->x < data->map_length - 1)
 			{
-				end = project(data, data->x + 1, data->y, data->matrix[data->y][data->x + 1]);
-				draw_line(data, data->current, end);
+				end = project(data, data->x + 1, data->y,
+						data->matrix[data->y][data->x + 1]);
+				draw_line(data, data->curr, end);
 			}
 			if (data->y < data->map_height - 1)
 			{
-				end = project(data, data->x, data->y + 1, data->matrix[data->y + 1][data->x]);
-				draw_line(data, data->current, end);
+				end = project(data, data->x, data->y + 1,
+						data->matrix[data->y + 1][data->x]);
+				draw_line(data, data->curr, end);
 			}
-		}		
+		}
 	}
 	mlx_put_image_to_window(data->mlx, data->window, data->img, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/16 22:15:51 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:40:16 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
 	char	*dst;
 
-	if (x < 0 || x >= WINDOW_LENGTH || y < 0 || y >= WINDOW_HEIGHT)
+	if (x < 0 || x >= LENGTH || y < 0 || y >= HEIGHT)
 		return ;
-	if ((y * data->line_length + x * (data->bits_per_pixel / 8)) >= (WINDOW_HEIGHT * data->line_length))
+	if ((y * data->line_length + x * (data->bits_per_pixel / 8)) >= (HEIGHT * data->line_length))
 		return ;
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
@@ -56,6 +56,10 @@ int	main(int argc, char **argv)
 	init_matrix(argv[1], data);
 	data->x = 0;
 	data->y = 0;
+	data->shift_x = 1;
+	data->shift_y = 1;
+	data->zoom = 20;
+	data->coef = 1;
 	init_data(data);
 	return (0);
 }
