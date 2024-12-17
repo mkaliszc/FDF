@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:11:35 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 18:48:45 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/17 22:01:40 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,10 @@ int	handle_mouse(int key, int x, int y, t_data *data)
 {
 	(void)x;
 	(void)y;
-	if (data->zoom > 2.0)
-	{
-		if (key == MOUSE_UP)
-			data->zoom = data->zoom * 1.1;
-		else if (key == MOUSE_DOWN)
-			data->zoom = data->zoom * 0.9;
-	}
+	if (key == MOUSE_UP)
+		data->zoom = data->zoom * 1.1;
+	else if (key == MOUSE_DOWN)
+		data->zoom = data->zoom * 0.9;
 	mlx_destroy_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, 1920, 1080);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, \
