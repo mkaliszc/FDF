@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:15:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 17:27:37 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:56:39 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ void	map_dimensions(t_data *data, char *file_name)
 	if (fd < 0)
 	{
 		perror("Error while opening the file");
-		return ;
+		free_data(data);
+		exit(1);
 	}
 	line = get_next_line(fd);
 	get_length(data, line);
@@ -75,7 +76,8 @@ void	create_matrix(t_data *data, char *file_name)
 	if (fd < 0)
 	{
 		perror("Error while opening the file");
-		return ;
+		free_data(data);
+		exit(1);
 	}
 	line = get_next_line(fd);
 	while (line != NULL && y < data->map_height)
@@ -89,23 +91,25 @@ void	create_matrix(t_data *data, char *file_name)
 	free(line);
 }
 
-void	init_matrix(char *file_name, t_data *data)
+int	init_matrix(char *file_name, t_data *data)
 {
 	int	i;
 
 	data->map_height = 0;
 	data->map_length = 0;
+	data->matrix = NULL;
 	map_dimensions(data, file_name);
 	data->matrix = malloc(sizeof(int *) * data->map_height);
 	if (data->matrix == NULL)
-		return ;
+		return (0);
 	i = 0;
 	while (i < data->map_height)
 	{
 		data->matrix[i] = malloc(sizeof(int) * data->map_length);
 		if (data->matrix[i] == NULL)
-			return ;
+			return (0);
 		i++;
 	}
 	create_matrix(data, file_name);
+	return (1);
 }

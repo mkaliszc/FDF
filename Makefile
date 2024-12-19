@@ -23,7 +23,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) $(LIB)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) include/minilibx/libmlx.a -lX11 -lXext -lm -lz
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIB) include/minilibx-linux/libmlx.a -lX11 -lXext -lm -lz
 
 $(LIB):
 	@$(MAKE) -C $(LIB_DIR)

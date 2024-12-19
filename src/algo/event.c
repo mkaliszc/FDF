@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/16 21:11:35 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 22:35:44 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:38:54 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	handle_close(t_data *data)
 	exit(1);
 }
 
-int	wich_key(int key, t_data *data)
+int	which_key(int key, t_data *data)
 {
 	if (key == ESCAPE)
 		handle_close(data);
@@ -63,7 +63,7 @@ int	wich_key(int key, t_data *data)
 
 int	handle_press(int key, t_data *data)
 {
-	wich_key(key, data);
+	which_key(key, data);
 	mlx_destroy_image(data->mlx, data->img);
 	data->img = mlx_new_image(data->mlx, 1920, 1080);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, \

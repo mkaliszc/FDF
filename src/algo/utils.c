@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 15:10:08 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 17:28:28 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:55:10 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ void	free_matrix(t_data *data)
 
 void	free_data(t_data *data)
 {
-	free_matrix(data);
+	if (!data)
+		return ;
+	if (data->matrix)
+		free_matrix(data);
 	free(data);
 }

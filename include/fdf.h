@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/17 22:36:02 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 14:48:46 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "../src/OctoLIB/include/libft.h"
 # include <errno.h>
 # include <math.h>
-# include "minilibx/mlx.h"
+# include "minilibx-linux/mlx.h"
 # include <X11/keysym.h>
 # include <X11/XKBlib.h>
 
@@ -37,25 +37,25 @@
 # define T_KEY XK_t
 # define I_KEY XK_i
 
-typedef	enum e_proj
+typedef enum e_proj
 {
 	ISO,
 	TOP
-} 	t_proj;
+}	t_proj;
 
 typedef struct s_point
 {
-	double  x;
-	double  y;
-	int     z;
-	double  delta_x;
-	double  delta_y;
-	int     steps;
-	double  x_increment;
-	double  y_increment;
-}	t_point;
+	double	x;
+	double	y;
+	int		z;
+	double	delta_x;
+	double	delta_y;
+	int		steps;
+	double	x_increment;
+	double	y_increment;
+}			t_point;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*img;
 	void	*mlx;
@@ -74,10 +74,10 @@ typedef struct	s_data
 	int		shift_x;
 	int		shift_y;
 	t_proj	proj_type;
-	t_point curr;
+	t_point	curr;
 }			t_data;
 
-void	init_matrix(char *file_name, t_data *data);
+int		init_matrix(char *file_name, t_data *data);
 int		check_file_name(char *file_name);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_point	iso_proj(double x, double y, double z, t_data *data);
