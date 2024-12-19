@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 21:15:16 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/19 14:56:39 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:40:38 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	create_matrix(t_data *data, char *file_name)
 	free(line);
 }
 
-int	init_matrix(char *file_name, t_data *data)
+void	init_matrix(char *file_name, t_data *data)
 {
 	int	i;
 
@@ -101,15 +101,15 @@ int	init_matrix(char *file_name, t_data *data)
 	map_dimensions(data, file_name);
 	data->matrix = malloc(sizeof(int *) * data->map_height);
 	if (data->matrix == NULL)
-		return (0);
+		return ;
 	i = 0;
 	while (i < data->map_height)
 	{
 		data->matrix[i] = malloc(sizeof(int) * data->map_length);
 		if (data->matrix[i] == NULL)
-			return (0);
+			return ;
 		i++;
 	}
 	create_matrix(data, file_name);
-	return (1);
+	return ;
 }

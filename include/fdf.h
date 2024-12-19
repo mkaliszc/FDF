@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:23:04 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/19 14:48:46 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:41:01 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ typedef struct s_data
 	t_point	curr;
 }			t_data;
 
-int		init_matrix(char *file_name, t_data *data);
+void	init_matrix(char *file_name, t_data *data);
 int		check_file_name(char *file_name);
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_point	iso_proj(double x, double y, double z, t_data *data);

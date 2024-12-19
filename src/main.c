@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/19 14:50:14 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/19 16:40:09 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,14 @@ int	main(int argc, char **argv)
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		return (perror("Allocation error for data"), 1);
-	if (!init_matrix(argv[1], data))
-		return (perror("Error while creating the matrix"), 1);
-	else
-	{
-		data->x = 0;
-		data->y = 0;
-		data->shift_x = 1;
-		data->shift_y = 1;
-		data->zoom = 20;
-		data->coef = 1;
-		data->proj_type = 0;
-		init_data(data);
-	}
+	init_matrix(argv[1], data);
+	data->x = 0;
+	data->y = 0;
+	data->shift_x = 1;
+	data->shift_y = 1;
+	data->zoom = 20;
+	data->coef = 1;
+	data->proj_type = 0;
+	init_data(data);
 	return (0);
 }
