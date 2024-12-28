@@ -6,7 +6,7 @@
 /*   By: mkaliszc <mkaliszc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 17:22:31 by mkaliszc          #+#    #+#             */
-/*   Updated: 2024/12/19 16:40:09 by mkaliszc         ###   ########.fr       */
+/*   Updated: 2024/12/28 17:16:32 by mkaliszc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ int	main(int argc, char **argv)
 		write(2, "Usage: ./fdf <map_file>\n", 24);
 		return (1);
 	}
-	if (check_file_name(argv[1]) == 1)
-		return (1);
+	check_file_name(argv[1]);
 	data = malloc(sizeof(t_data));
 	if (data == NULL)
 		return (perror("Allocation error for data"), 1);
